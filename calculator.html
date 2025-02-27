@@ -1,0 +1,68 @@
+r<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ03vMeJfP0e7o6P8R9vOryE5e1H9g5g5g5g5g5g5g5g5g5g5g5g5g5g5g5" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">  
+</head>
+<body>
+
+<div class="container">
+  <div class="calculator">
+    <div class="output" id="output">0</div>
+    <div class="buttons d-flex flex-wrap">
+      <button class="btn btn-light" onclick="appendToOutput('7')">7</button>
+      <button class="btn btn-light" onclick="appendToOutput('8')">8</button>
+      <button class="btn btn-light" onclick="appendToOutput('9')">9</button>
+      <button class="btn btn-light" onclick="appendToOutput('/')">/</button>
+
+      <button class="btn btn-light" onclick="appendToOutput('4')">4</button>
+      <button class="btn btn-light" onclick="appendToOutput('5')">5</button>
+      <button class="btn btn-light" onclick="appendToOutput('6')">6</button>
+      <button class="btn btn-light" onclick="appendToOutput('*')">*</button>
+
+      <button class="btn btn-light" onclick="appendToOutput('1')">1</button>
+      <button class="btn btn-light" onclick="appendToOutput('2')">2</button>
+      <button class="btn btn-light" onclick="appendToOutput('3')">3</button>
+      <button class="btn btn-light" onclick="appendToOutput('-')">-</button>
+
+      <button class="btn btn-light" onclick="appendToOutput('0')">0</button>
+      <button class="btn btn-light" onclick="appendToOutput('.')">.</button>
+      <button class="btn btn-light" onclick="calculateResult()">=</button>
+      <button class="btn btn-light" onclick="appendToOutput('+')">+</button>
+      
+      <button class="btn btn-danger col-12" onclick="clearOutput()">C</button>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb9ON6sJk6yff0Lyy3z7gf6zTM2l5g5J3z7n8yZg5y"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-GLhlTQ8iRABdE+0R5R4cS10FLk9p19m9pGzL8nT2c9o33w4rCXyPBW93GQH5s1ON" crossorigin="anonymous"></script>
+
+<script>
+  function appendToOutput(value) {
+    const output = document.getElementById('output');
+    if (output.innerText === '0') {
+      output.innerText = value;
+    } else {
+      output.innerText += value;
+    }
+  }
+
+  function calculateResult() {
+    const output = document.getElementById('output');
+    try {
+      output.innerText = eval(output.innerText);
+    } catch (error) {
+      output.innerText = 'Error';
+    }
+  }
+
+  function clearOutput() {
+    document.getElementById('output').innerText = '0';
+  }
+</script>
+
+</body>
+</html>
